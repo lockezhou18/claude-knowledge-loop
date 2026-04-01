@@ -33,7 +33,9 @@ Inspired by the idea of **compound engineering** — the principle that the best
 
 Every engineer has solved the same problem twice because they forgot the first solution. Every team has made the same mistake because the lesson lived in someone's head, not in a searchable note.
 
-These skills close that gap. The key insight: **knowledge doesn't compound automatically — it needs a system.** Research generates understanding. Building tests that understanding. Compound captures what survived. Refresh keeps it honest.
+These skills close that gap. But they do more than just remember — they help you **discover what you don't know.** Most tools operate within your current knowledge boundary: you ask a question, you get an answer. The knowledge loop pushes beyond that boundary. `/research` uses Socratic questioning to surface hidden assumptions and find contradictions. `/compound` captures surprises — the moments where reality didn't match your mental model. Over time, the system maps not just what you know, but what you *know you don't know* — and that's where the real leverage is.
+
+The key insight: **knowledge doesn't compound automatically — it needs a system.** Research generates understanding. Building tests that understanding. Compound captures what survived. Refresh keeps it honest.
 
 Over weeks and months, your knowledge base grows from nothing into a searchable repository of patterns, decisions, and lessons that makes every `/research` cycle faster and every `/lfg` build more informed.
 
