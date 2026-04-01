@@ -2,6 +2,10 @@
 
 These skills build on ideas spanning 2,400 years of systematic inquiry and cutting-edge AI research. Credit where it's due.
 
+## Compound Engineering
+
+The name and core philosophy come from **Kieran Klaassen** at [Every Inc.](https://every.to/guides/compound-engineering) — the idea that each unit of engineering work should make subsequent units easier. Their [compound-engineering-plugin](https://github.com/EveryInc/compound-engineering-plugin) and [compound-knowledge-plugin](https://github.com/EveryInc/compound-knowledge-plugin) implement this for Claude Code. Our skills take a different approach (Socratic research, Zettelkasten knowledge capture, gated pipeline) but share the same underlying principle: **make work compound.**
+
 ## Philosophy
 
 The `/research` skill's inquiry cycle draws from three traditions:

@@ -92,7 +92,7 @@ Each note is atomic, tagged, and linked to related notes. After 30+ notes, patte
 
 ## Why This Approach
 
-Inspired by **compound engineering** — the idea that the best engineers build systems that make every future task easier. Just as compound interest grows wealth, compound engineering grows capability.
+Inspired by [**compound engineering**](https://every.to/guides/compound-engineering) (Kieran Klaassen / Every Inc.) — the idea that each unit of engineering work should make subsequent units *easier*, not harder. Just as compound interest grows wealth, compound engineering grows capability. See also their [compound-engineering-plugin](https://github.com/EveryInc/compound-engineering-plugin) and [compound-knowledge-plugin](https://github.com/EveryInc/compound-knowledge-plugin).
 
 Most tools operate within your current knowledge boundary: you ask, you get an answer. This loop pushes **beyond** that boundary. `/research` uses Socratic questioning to surface hidden assumptions and find contradictions. `/compound` captures surprises — moments where reality didn't match your mental model. Over time, the system maps not just what you know, but what you *know you don't know*.
 
