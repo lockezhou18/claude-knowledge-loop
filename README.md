@@ -19,11 +19,13 @@ The inquiry cycle works for any domain — engineering, business, theology, mark
 
 1. **`/research`** — Systematic inquiry before you build. Not search — research. Uses Socratic questioning, Aristotle's Four Causes, and abductive reasoning to generate understanding, not just find information.
 
-2. **`/lfg`** — Gated engineering pipeline: RESEARCH → PROPOSE → PLAN → BUILD → REVIEW → DEPLOY → VERIFY → COMPOUND. Matches ceremony to scope — trivial tasks skip the pipeline, heavy tasks get deep research and threat modeling. No skipping stages.
+2. **`/lfg`** — Gated engineering pipeline: RESEARCH → PROPOSE → PLAN → BUILD → REVIEW → DEPLOY → VERIFY → COMPOUND. Matches ceremony to scope — trivial tasks skip the pipeline, heavy tasks get deep research and threat modeling. No skipping stages. **`/lfg` automatically calls `/research` at stage 0 and `/compound` at stage 7** — it's the full loop in one command.
 
 3. **`/compound`** — After completing work, captures non-obvious learnings as atomic, linked notes (Zettelkasten-style). Classifies what happened, suggests what to save, routes to the right place. You decide what to keep.
 
 4. **`/compound-refresh`** — Periodic maintenance on your knowledge base. Checks notes against current code, heals broken links, flags contradictions, archives stale insights, synthesizes patterns from 3+ related notes.
+
+> **How they relate:** `/lfg` is the all-in-one pipeline — it runs `/research` and `/compound` as part of its stages. Use `/research` or `/compound` standalone when you want inquiry or learning capture *outside* a build task (e.g., exploring a topic, or capturing learnings from a debugging session). Use `/compound-refresh` on a regular schedule regardless.
 
 ## Why This Exists
 
