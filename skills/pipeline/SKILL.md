@@ -1,9 +1,9 @@
 ---
-description: "LFG — Autonomous Engineering Pipeline. Full engineering pipeline with enforced gates from research to deployment to knowledge capture."
+description: "Pipeline — Gated Engineering Pipeline. Full engineering pipeline with enforced gates from research to deployment to knowledge capture."
 user_invocable: true
 ---
 
-# LFG — Autonomous Engineering Pipeline
+# Pipeline — Gated Engineering Pipeline
 
 Full engineering pipeline with enforced gates. Each stage MUST produce a gate artifact before proceeding. No skipping. No exceptions.
 
@@ -34,7 +34,7 @@ RESEARCH ──► PROPOSE ──► PLAN ──► BUILD ───────�
 
 ## When to use
 - Starting any non-trivial task (more than a config tweak or typo fix)
-- The user says "lfg", "let's go", "ship it", or "build this"
+- The user says "let's go", "ship it", "build this", or "pipeline"
 - When you want to ensure a task goes from idea to shipped without cutting corners
 
 ## Scope Assessment
@@ -56,8 +56,8 @@ Announce the scope classification before starting. If the user disagrees, adjust
 
 **Run `/research` on the task.** The full inquiry framework (Socratic questioning, Aristotelian analysis, abductive reasoning) lives in the `/research` skill.
 
-**Scope mapping for /lfg:**
-| LFG Scope | /research Depth | What happens |
+**Scope mapping for /pipeline:**
+| Pipeline Scope | /research Depth | What happens |
 |-----------|----------------|-------------|
 | **Trivial** | Skip | Task is obvious |
 | **Light** | Skip | Well-understood territory |

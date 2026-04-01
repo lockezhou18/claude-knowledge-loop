@@ -9,14 +9,14 @@ git clone https://github.com/lockezhou18/claude-knowledge-loop.git
 cp -r claude-knowledge-loop/skills/* ~/.claude/commands/
 ```
 
-Then type `/research <topic>` or `/lfg` in any Claude Code session.
+Then type `/research <topic>` or `/pipeline` in any Claude Code session.
 
 ## Skills
 
 | Skill | Command | When to use |
 |-------|---------|-------------|
 | **Research** | `/research <topic>` | Before any non-trivial decision. Explores a question using Socratic inquiry, finds contradictions, surfaces what you don't know. |
-| **LFG** | `/lfg` | When building anything beyond a one-line fix. Gated pipeline from research to deployment. Calls `/research` and `/compound` automatically. |
+| **Pipeline** | `/pipeline` | When building anything beyond a one-line fix. Gated pipeline from research to deployment. Calls `/research` and `/compound` automatically. |
 | **Compound** | `/compound` | After completing work. Captures non-obvious learnings as linked notes. You choose what to keep. |
 | **Compound Refresh** | `/compound-refresh` | Monthly, or after major changes. Audits your notes against current code, heals broken links, archives stale insights. |
 
@@ -78,7 +78,7 @@ Each note is atomic, tagged, and linked to related notes. After 30+ notes, patte
 ## The Loop
 
 ```
-  /research         /lfg            /compound        /compound-refresh
+  /research         /pipeline       /compound        /compound-refresh
   ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐
   │ Understand│───►│  Build   │───►│ Capture  │───►│ Maintain │
   │  deeply   │    │ with     │    │ what you │    │ what you │
@@ -88,7 +88,7 @@ Each note is atomic, tagged, and linked to related notes. After 30+ notes, patte
         └──────── knowledge feeds back ────────────────┘
 ```
 
-`/lfg` is the all-in-one: it runs `/research` at stage 0 and `/compound` at stage 7 automatically. Use `/research` or `/compound` standalone for inquiry or learning capture outside a build task. Run `/compound-refresh` on a regular schedule.
+`/pipeline` is the all-in-one: it runs `/research` at stage 0 and `/compound` at stage 7 automatically. Use `/research` or `/compound` standalone for inquiry or learning capture outside a build task. Run `/compound-refresh` on a regular schedule.
 
 ## Why This Approach
 
@@ -122,7 +122,7 @@ Start empty — it fills up naturally as you work. Around 10-15 notes, `/researc
 </details>
 
 <details>
-<summary><b>How /lfg scales to scope</b></summary>
+<summary><b>How /pipeline scales to scope</b></summary>
 
 | Scope | Pipeline | When |
 |-------|----------|------|
@@ -151,10 +151,10 @@ These skills are designed to be forked:
 ## FAQ
 
 **Do I need a knowledge base to start?**
-No. `/research` and `/lfg` work standalone. Add a knowledge base later when you want notes to persist.
+No. `/research` and `/pipeline` work standalone. Add a knowledge base later when you want notes to persist.
 
 **Will these slow me down?**
-`/lfg` skips the pipeline for trivial tasks. The overhead scales with risk. The investment pays back when you don't solve the same problem twice.
+`/pipeline` skips the pipeline for trivial tasks. The overhead scales with risk. The investment pays back when you don't solve the same problem twice.
 
 **Can I use these with a team?**
 Yes. Install to `.claude/commands/` in your repo. Everyone gets the same skills, and `/compound` writes notes others can find.

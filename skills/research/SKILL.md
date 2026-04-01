@@ -7,14 +7,14 @@ user_invocable: true
 
 Research is not search. Search finds what's known. Research discovers what's unknown and generates new understanding.
 
-This skill can be invoked standalone (`/research <topic>`) or as Stage 0 of the `/lfg` pipeline.
+This skill can be invoked standalone (`/research <topic>`) or as Stage 0 of the `/pipeline` skill.
 
 ## When to use
 - Any question that deserves more than a quick lookup
 - Before making a significant decision (technical, business, personal)
 - When entering unfamiliar territory
 - When the user says "research", "deep dive", "explore", "investigate", "what should we know about..."
-- Automatically invoked by `/lfg` for Standard/Heavy/Research-heavy scope tasks
+- Automatically invoked by `/pipeline` for Standard/Heavy/Research-heavy scope tasks
 
 ## Scope Assessment
 

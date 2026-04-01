@@ -29,7 +29,7 @@ The `/compound` and `/compound-refresh` skills implement ideas from:
 
 ## Engineering Pipeline
 
-The `/lfg` pipeline's gated approach draws from:
+The `/pipeline` skill's gated approach draws from:
 
 - **Constitutional AI** (Anthropic, 2022; [arXiv:2212.08073](https://arxiv.org/abs/2212.08073)) — AI systems that govern themselves through explicit principles.
 - **IterAlign** (Xiong et al., NAACL 2024; [ACL Anthology](https://aclanthology.org/2024.naacl-long.78/)) — Constitutional self-evolution through auto-red-teaming.
@@ -46,7 +46,7 @@ The source selection matrix and authority scoring in `/research`:
 
 ## Engineering Books
 
-Principles embedded throughout `/lfg`:
+Principles embedded throughout `/pipeline`:
 
 - *Site Reliability Engineering* (Google, 2016)
 - *Release It!* (Nygard, 2007/2018)
