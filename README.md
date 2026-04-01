@@ -1,8 +1,79 @@
 # Claude Knowledge Loop
 
-Four skills for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) that make your knowledge compound over time.
+Stop solving the same problem twice. Four Claude Code skills that make your knowledge compound over time.
 
-The inquiry cycle works for any domain — engineering, business, theology, markets, research — but the pipeline and examples lean toward software engineering. Most AI coding tools help you build faster. These help you **learn faster** — so every project makes the next one better.
+## Install
+
+```bash
+git clone https://github.com/lockezhou18/claude-knowledge-loop.git
+cp -r claude-knowledge-loop/skills/* ~/.claude/commands/
+```
+
+Then type `/research <topic>` or `/lfg` in any Claude Code session.
+
+## Skills
+
+| Skill | Command | When to use |
+|-------|---------|-------------|
+| **Research** | `/research <topic>` | Before any non-trivial decision. Explores a question using Socratic inquiry, finds contradictions, surfaces what you don't know. |
+| **LFG** | `/lfg` | When building anything beyond a one-line fix. Gated pipeline from research to deployment. Calls `/research` and `/compound` automatically. |
+| **Compound** | `/compound` | After completing work. Captures non-obvious learnings as linked notes. You choose what to keep. |
+| **Compound Refresh** | `/compound-refresh` | Monthly, or after major changes. Audits your notes against current code, heals broken links, archives stale insights. |
+
+## Example: What `/research` produces
+
+```
+> /research should we use NATS or Redis for agent messaging?
+```
+
+```markdown
+## Research: Agent Messaging Transport
+
+### Question
+Not "NATS vs Redis" but "what transport properties does a multi-agent
+system actually need, and which tool best fits those properties?"
+
+### What surprised us
+Redis Streams can do pub/sub, but its consumer group model requires
+careful partition management that NATS handles natively. Most "Redis
+for messaging" blog posts benchmark happy-path throughput and ignore
+consumer failure recovery.
+
+### Contradictions
+Paper X claims NATS has higher latency than Redis. But the benchmark
+used single-node Redis vs clustered NATS — not a fair comparison.
+NATS single-node benchmarks show 12M msg/sec vs Redis's 1M msg/sec.
+
+### What we don't know
+How either behaves under network partitions with our specific
+message sizes (8-32KB agent payloads). Need to benchmark ourselves.
+
+### Hypothesis
+NATS fits better — native pub/sub, no partition management, built-in
+JetStream for persistence. Redis would require building what NATS
+gives out of the box.
+
+### What would change our mind
+If our message patterns turn out to be primarily point-to-point (not
+pub/sub), Redis Streams' simpler operational model might win.
+```
+
+The key output isn't the answer — it's the "What surprised us" and "What we don't know" sections. Those push your understanding beyond what a simple search would find.
+
+## Example: What `/compound` captures
+
+After a debugging session:
+
+```
+> /compound
+
+/compound found:
+  - Surprising root cause (DNS cache, not API timeout) → save knowledge note? [y/n]
+  - Pattern: 3rd time we've seen DNS issues after deploy → synthesize pattern? [y/n]
+  - 2 backlog items discussed → save to backlog? [y/n]
+```
+
+Each note is atomic, tagged, and linked to related notes. After 30+ notes, patterns emerge automatically.
 
 ## The Loop
 
@@ -17,52 +88,27 @@ The inquiry cycle works for any domain — engineering, business, theology, mark
         └──────── knowledge feeds back ────────────────┘
 ```
 
-1. **`/research`** — Systematic inquiry before you build. Not search — research. Uses Socratic questioning, Aristotle's Four Causes, and abductive reasoning to generate understanding, not just find information.
+`/lfg` is the all-in-one: it runs `/research` at stage 0 and `/compound` at stage 7 automatically. Use `/research` or `/compound` standalone for inquiry or learning capture outside a build task. Run `/compound-refresh` on a regular schedule.
 
-2. **`/lfg`** — Gated engineering pipeline: RESEARCH → PROPOSE → PLAN → BUILD → REVIEW → DEPLOY → VERIFY → COMPOUND. Matches ceremony to scope — trivial tasks skip the pipeline, heavy tasks get deep research and threat modeling. No skipping stages. **`/lfg` automatically calls `/research` at stage 0 and `/compound` at stage 7** — it's the full loop in one command.
+## Why This Approach
 
-3. **`/compound`** — After completing work, captures non-obvious learnings as atomic, linked notes (Zettelkasten-style). Classifies what happened, suggests what to save, routes to the right place. You decide what to keep.
+Inspired by **compound engineering** — the idea that the best engineers build systems that make every future task easier. Just as compound interest grows wealth, compound engineering grows capability.
 
-4. **`/compound-refresh`** — Periodic maintenance on your knowledge base. Checks notes against current code, heals broken links, flags contradictions, archives stale insights, synthesizes patterns from 3+ related notes.
+Most tools operate within your current knowledge boundary: you ask, you get an answer. This loop pushes **beyond** that boundary. `/research` uses Socratic questioning to surface hidden assumptions and find contradictions. `/compound` captures surprises — moments where reality didn't match your mental model. Over time, the system maps not just what you know, but what you *know you don't know*.
 
-> **How they relate:** `/lfg` is the all-in-one pipeline — it runs `/research` and `/compound` as part of its stages. Use `/research` or `/compound` standalone when you want inquiry or learning capture *outside* a build task (e.g., exploring a topic, or capturing learnings from a debugging session). Use `/compound-refresh` on a regular schedule regardless.
+The inquiry cycle works for any domain — engineering, business, research, markets — but the pipeline and examples lean toward software engineering.
 
-## Why This Exists
+<details>
+<summary><b>Setting up a knowledge base (optional)</b></summary>
 
-Inspired by the idea of **compound engineering** — the principle that the best engineers don't just ship features, they build systems that make every future task easier. Just as compound interest grows wealth over time, compound engineering grows capability: each problem solved, each pattern discovered, each decision documented feeds back into the next cycle of work.
-
-Every engineer has solved the same problem twice because they forgot the first solution. Every team has made the same mistake because the lesson lived in someone's head, not in a searchable note.
-
-These skills close that gap. But they do more than just remember — they help you **discover what you don't know.** Most tools operate within your current knowledge boundary: you ask a question, you get an answer. The knowledge loop pushes beyond that boundary. `/research` uses Socratic questioning to surface hidden assumptions and find contradictions. `/compound` captures surprises — the moments where reality didn't match your mental model. Over time, the system maps not just what you know, but what you *know you don't know* — and that's where the real leverage is.
-
-The key insight: **knowledge doesn't compound automatically — it needs a system.** Research generates understanding. Building tests that understanding. Compound captures what survived. Refresh keeps it honest.
-
-Over weeks and months, your knowledge base grows from nothing into a searchable repository of patterns, decisions, and lessons that makes every `/research` cycle faster and every `/lfg` build more informed.
-
-## Install
-
-```bash
-git clone https://github.com/lockezhou18/claude-knowledge-loop.git
-cp -r claude-knowledge-loop/skills/* ~/.claude/commands/
-```
-
-Or install to a specific project (shared with collaborators via git):
-```bash
-cp -r claude-knowledge-loop/skills/* your-project/.claude/commands/
-```
-
-Start a Claude Code session and type `/research <topic>` or `/lfg`.
-
-## Setting Up Your Knowledge Base
-
-The loop works best with a place to store notes. Create a simple structure:
+The loop works best with a place to store notes:
 
 ```bash
 mkdir -p ~/knowledge/{notes,sources}
 touch ~/knowledge/INDEX.md
 ```
 
-Then tell Claude where it is by adding to your project's `CLAUDE.md`:
+Add to your project's `CLAUDE.md`:
 
 ```markdown
 Knowledge base location: ~/knowledge/
@@ -71,34 +117,12 @@ Knowledge base location: ~/knowledge/
 - Index: ~/knowledge/INDEX.md
 ```
 
-The skills will read and write notes there. Start empty — it fills up naturally as you work.
+Start empty — it fills up naturally as you work. Around 10-15 notes, `/research` starts finding relevant past work. Around 30+, `/compound-refresh` starts suggesting pattern synthesis.
 
-## How Each Skill Works
+</details>
 
-### `/research <topic>`
-
-Runs a 6-step inquiry cycle:
-
-1. **DEFINE** — Question the question. What are you actually asking? What are you assuming?
-2. **EXPLORE** — Check local knowledge, then primary sources, then external sources matched to your research mode (DISCOVER / UNDERSTAND / BUILD / DEBUG / EVALUATE)
-3. **QUESTION** — Attack your own findings using 6 types of Socratic questions
-4. **HYPOTHESIZE** — Generate the best explanation using abductive reasoning
-5. **SYNTHESIZE** — Find where sources agree, disagree, and leave gaps
-6. **REFLECT** — Name what you know, what you don't, and what to ask next
-
-Produces a research artifact with: Question, Findings, Surprises, Contradictions, Hypothesis, and What Would Change Our Mind.
-
-**Scales to scope:** Quick (2-5 min) for known domains, Exhaustive (30+ min) for foundational decisions.
-
-### `/lfg`
-
-Eight-stage pipeline with enforced gates:
-
-```
-RESEARCH → PROPOSE → PLAN → BUILD → REVIEW → DEPLOY → VERIFY → COMPOUND
-```
-
-Each stage produces evidence before the next begins. Scope determines ceremony:
+<details>
+<summary><b>How /lfg scales to scope</b></summary>
 
 | Scope | Pipeline | When |
 |-------|----------|------|
@@ -107,61 +131,34 @@ Each stage produces evidence before the next begins. Scope determines ceremony:
 | Standard | All 8 stages | Multiple files, moderate risk |
 | Heavy | All 8 + deep research + threat model | Cross-system, high risk |
 
-### `/compound`
+Full pipeline: RESEARCH → PROPOSE → PLAN → BUILD → REVIEW → DEPLOY → VERIFY → COMPOUND. Each stage produces evidence before the next begins.
 
-Scans the conversation after work is done and suggests what to save:
+</details>
 
-- Architecture decisions → specs
-- Research findings → knowledge notes + source cards
-- Reusable patterns → pattern notes
-- Surprises and failures → solution notes
-- Session context → session cards
+<details>
+<summary><b>Customization</b></summary>
 
-**Suggest, not enforce** — presents findings, you decide what to keep. Checks for overlap before writing (updates existing notes instead of duplicating).
+These skills are designed to be forked:
 
-### `/compound-refresh`
+- **Knowledge location** — Point to wherever you keep notes
+- **Pipeline stages** — Solo projects might skip REVIEW or simplify DEPLOY
+- **Scope thresholds** — Adjust what counts as Light/Standard/Heavy
+- **Source matrix** — `/research` has a source selection matrix by research mode. Reorder for your domain
+- **Note format** — `/compound` uses a frontmatter schema. Adapt to your preference
 
-Monthly (or after major changes) maintenance:
-
-1. **Inventory** — Count notes, check index sync
-2. **Assess** — Do referenced files still exist? Is the insight still accurate?
-3. **Classify** — Keep / Update / Consolidate / Supersede / Archive
-4. **Heal** — Fix orphan notes, missing links, unresolved contradictions
-5. **Report** — Summary of changes and knowledge base health
-
-## Customization
-
-These skills are designed to be forked. Common adjustments:
-
-- **Knowledge location** — Point to wherever you keep notes (`~/knowledge/`, `docs/knowledge/`, etc.)
-- **Pipeline stages** — `/lfg` has 8 stages. Solo projects might skip REVIEW or simplify DEPLOY.
-- **Scope thresholds** — Adjust what counts as Light/Standard/Heavy for your risk tolerance.
-- **Source preferences** — `/research` has a source selection matrix. Reorder for your domain.
-- **Note format** — `/compound` uses a specific frontmatter schema. Adapt to your preference.
-
-## Requirements
-
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI, desktop app, or IDE extension
-- No external dependencies — all skills use Claude's built-in tools
+</details>
 
 ## FAQ
 
 **Do I need a knowledge base to start?**
-No. `/research` and `/lfg` work standalone. The knowledge base makes them better over time, but you can start without one and add it later.
+No. `/research` and `/lfg` work standalone. Add a knowledge base later when you want notes to persist.
 
 **Will these slow me down?**
-For trivial tasks, `/lfg` skips the pipeline entirely. The overhead scales with risk — a one-line fix gets no ceremony, a cross-system change gets full research and review. The investment pays back when you don't solve the same problem twice.
-
-**How many notes before it's useful?**
-Around 10-15 notes, `/research` starts finding relevant past work. Around 30+, patterns emerge and `/compound-refresh` starts suggesting synthesis. The system gets better the more you use it.
+`/lfg` skips the pipeline for trivial tasks. The overhead scales with risk. The investment pays back when you don't solve the same problem twice.
 
 **Can I use these with a team?**
-Yes. Install to `.claude/commands/` in your repo (committed to git). Everyone on the team gets the same skills, and `/compound` writes notes that others can find.
+Yes. Install to `.claude/commands/` in your repo. Everyone gets the same skills, and `/compound` writes notes others can find.
 
 ## License
 
-MIT
-
-## Acknowledgments
-
-See [ACKNOWLEDGMENTS.md](ACKNOWLEDGMENTS.md) for the full intellectual lineage — from Socratic method to Constitutional AI to Zettelkasten.
+MIT — see [ACKNOWLEDGMENTS.md](ACKNOWLEDGMENTS.md) for intellectual lineage (Socratic method, Zettelkasten, Constitutional AI, and more).
