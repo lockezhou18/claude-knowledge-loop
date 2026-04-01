@@ -8,7 +8,7 @@ user_invocable: true
 Review existing notes in your knowledge base against the current codebase and team state. Keep the knowledge base accurate, connected, and useful.
 
 ## When to use
-- Monthly maintenance (pair with `/ideate`)
+- Monthly maintenance
 - After a major refactor that may have invalidated old notes
 - When a note leads someone astray
 - When your knowledge index feels stale
