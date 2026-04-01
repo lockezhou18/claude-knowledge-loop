@@ -1,6 +1,6 @@
 # Claude Knowledge Loop
 
-Four skills that help you think clearly and remember what matters.
+Four skills that helps claude think clearly and remember what matters.
 
 ## Install
 
