@@ -29,6 +29,8 @@ The inquiry cycle works for any domain — engineering, business, theology, mark
 
 ## Why This Exists
 
+Inspired by the idea of **compound engineering** — the principle that the best engineers don't just ship features, they build systems that make every future task easier. Just as compound interest grows wealth over time, compound engineering grows capability: each problem solved, each pattern discovered, each decision documented feeds back into the next cycle of work.
+
 Every engineer has solved the same problem twice because they forgot the first solution. Every team has made the same mistake because the lesson lived in someone's head, not in a searchable note.
 
 These skills close that gap. The key insight: **knowledge doesn't compound automatically — it needs a system.** Research generates understanding. Building tests that understanding. Compound captures what survived. Refresh keeps it honest.
