@@ -1,6 +1,6 @@
 # Claude Knowledge Loop
 
-Stop solving the same problem twice. Four Claude Code skills that make your knowledge compound over time.
+Four skills that help you think clearly and remember what matters.
 
 ## Install
 
@@ -92,11 +92,11 @@ Each note is atomic, tagged, and linked to related notes. After 30+ notes, patte
 
 ## Why This Approach
 
-Inspired by [**compound engineering**](https://every.to/guides/compound-engineering) (Kieran Klaassen / Every Inc.) — the idea that each unit of engineering work should make subsequent units *easier*, not harder. Just as compound interest grows wealth, compound engineering grows capability. See also their [compound-engineering-plugin](https://github.com/EveryInc/compound-engineering-plugin) and [compound-knowledge-plugin](https://github.com/EveryInc/compound-knowledge-plugin).
-
-Most tools operate within your current knowledge boundary: you ask, you get an answer. This loop pushes **beyond** that boundary. `/research` uses Socratic questioning to surface hidden assumptions and find contradictions. `/compound` captures surprises — moments where reality didn't match your mental model. Over time, the system maps not just what you know, but what you *know you don't know*.
+Good work starts with good questions. These skills help you pause before building, challenge your assumptions, and hold onto what you've learned — so you and your team waste less and build on what came before.
 
 The inquiry cycle works for any domain — engineering, business, research, markets — but the pipeline and examples lean toward software engineering.
+
+Inspired by [compound engineering](https://every.to/guides/compound-engineering) (Kieran Klaassen / Every Inc.), Socratic inquiry, and the Zettelkasten method. See also their [compound-engineering-plugin](https://github.com/EveryInc/compound-engineering-plugin) and [compound-knowledge-plugin](https://github.com/EveryInc/compound-knowledge-plugin). Full lineage in [ACKNOWLEDGMENTS.md](ACKNOWLEDGMENTS.md).
 
 <details>
 <summary><b>Setting up a knowledge base (optional)</b></summary>
