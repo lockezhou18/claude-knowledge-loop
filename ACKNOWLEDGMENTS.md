@@ -36,6 +36,13 @@ The `/pipeline` skill's gated approach draws from:
 - **Self-Refine** (Madaan et al., 2023; [arXiv:2303.17651](https://arxiv.org/abs/2303.17651)) — The generate/feedback/refine loop.
 - **MetaClaw** (2026; [arXiv:2603.17187](https://arxiv.org/abs/2603.17187)) — Zero-cost self-evolution via skill synthesis.
 
+## v2 Additions (April 2026)
+
+Two disciplines added to `/research` v2 based on real usage:
+
+- **Andrej Karpathy** — "Zero to Hero" lecture series and the principle that *if you can't rebuild it minimally, you don't understand it*. This became the RECONSTRUCT step: strip a topic to its essential mechanism and re-implement it in < 50 lines before claiming to understand it.
+- **gstack** — The discipline of *verifying by probing the real system, not trusting descriptions*. Papers claim things code doesn't implement. Docs lag reality. The VERIFY step operationalizes this: before asserting X works, demonstrate X works against the actual running system.
+
 ## Research Methodology
 
 The source selection matrix and authority scoring in `/research`:

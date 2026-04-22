@@ -1,6 +1,6 @@
 # Claude Knowledge Loop
 
-Four skills that helps claude think clearly and remember what matters.
+Four skills that help Claude think clearly and remember what matters. `/research` v2 adds two steps: **RECONSTRUCT** (Karpathy — if you can't rebuild it minimally, you don't understand it) and **VERIFY** (probe the real system, don't trust descriptions).
 
 ## Install
 
@@ -15,7 +15,7 @@ Then type `/research <topic>` or `/pipeline` in any Claude Code session.
 
 | Skill | Command | When to use |
 |-------|---------|-------------|
-| **Research** | `/research <topic>` | Before any non-trivial decision. Explores a question using Socratic inquiry, finds contradictions, surfaces what you don't know. |
+| **Research** | `/research <topic>` | Before any non-trivial decision. 5-step cycle: DEFINE → DISCOVER → RECONSTRUCT → VERIFY → SYNTHESIZE. Finds contradictions, surfaces what you don't know. |
 | **Pipeline** | `/pipeline` | When building anything beyond a one-line fix. Gated pipeline from research to deployment. Calls `/research` and `/compound` automatically. |
 | **Compound** | `/compound` | After completing work. Captures non-obvious learnings as linked notes. You choose what to keep. |
 | **Compound Refresh** | `/compound-refresh` | Monthly, or after major changes. Audits your notes against current code, heals broken links, archives stale insights. |
