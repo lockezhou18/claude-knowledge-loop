@@ -41,7 +41,7 @@ The `/pipeline` skill's gated approach draws from:
 Two disciplines added to `/research` v2 based on real usage:
 
 - **Andrej Karpathy** — "Zero to Hero" lecture series and the principle that *if you can't rebuild it minimally, you don't understand it*. This became the RECONSTRUCT step: strip a topic to its essential mechanism and re-implement it in < 50 lines before claiming to understand it.
-- **gstack** — The discipline of *verifying by probing the real system, not trusting descriptions*. Papers claim things code doesn't implement. Docs lag reality. The VERIFY step operationalizes this: before asserting X works, demonstrate X works against the actual running system.
+- **gstack** — The engineering discipline captured in their principle: *"don't trust a design without a real smoke-test."* Papers claim things code doesn't implement. Docs lag reality. Memory rots. The VERIFY step operationalizes this: before asserting X works, demonstrate X works against the actual running system — curl the API, run the query, hit the endpoint. Their approach to building terse, imperative, verification-first agent instructions was one of the clearest influences on `/research` v2.
 
 ## Research Methodology
 
